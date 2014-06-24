@@ -2,12 +2,15 @@
 {% block body %}
 
 <table class="table table-striped">
-    <tr><th>Melon Name</th><th>Quantity</th><th>Price</th><th>Total</th></tr>
+    <tr><th>Melon Name</th><th>Quantity</th><th>Price</th><th>Total</th><th></th></tr>
+   
     {% for key, melon in melon_dict.iteritems() %}
         <tr><td>{{ melon['melon']['common_name'] }}</td>
             <td>{{ melon['qty'] }}</td>
             <td>{{ melon["melon"].format_number(melon['melon']['price']) }}</td>
-            <td>{{ melon["melon"].format_number(melon['total']) }}</td></tr>
+            <td>{{ melon["melon"].format_number(melon['total']) }}</td>
+            <td><form action="/removemelon" method="POST"><input type="hidden" name='name' value={{key}}><button type="submit" class="btn btn-large btn-primary">Remove</button></form></td></tr>
+            
     {% endfor %}
 </table>
 <h3>Total: {{ order_total }}</h3>

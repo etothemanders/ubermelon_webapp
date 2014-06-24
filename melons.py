@@ -56,8 +56,14 @@ def shopping_cart():
         return render_template("cart.html",
                                 melon_dict = {},
                                 order_total = 0)
-    
 
+
+@app.route("/removemelon", methods=["POST"])
+def remove_melons():
+    melon_id = request.form['name']
+    flash("Removed selected melons")
+    session['cart'].remove(int(melon_id))
+    return redirect("/cart")
 
 @app.route("/add_to_cart/<int:id>")
 def add_to_cart(id):
