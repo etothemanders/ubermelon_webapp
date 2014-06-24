@@ -77,4 +77,12 @@ def get_melon_by_id(id):
     return melon
 
 def get_customer_by_email(email):
-    pass
+    """Query for a specific customer in the database by email."""
+    cursor = connect()
+    query = """SELECT givenname, surname
+               FROM customers
+               WHERE email = ?;"""
+    cursor.execute(query, (email,))
+    person = cursor.fetchone()
+
+    return person

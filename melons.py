@@ -27,7 +27,7 @@ def show_melon(id):
     print melon
     return render_template("melon_details.html",
                   display_melon = melon)
-
+ 
 @app.route("/cart")
 def shopping_cart():
     """TODO: Display the contents of the shopping cart. The shopping cart is a
@@ -82,7 +82,12 @@ def show_login():
 def process_login():
     """TODO: Receive the user's login credentials located in the 'request.form'
     dictionary, look up the user, and store them in the session."""
-    return "Oops! This needs to be implemented"
+
+    username = request.form['username']
+    password = request.form['password']
+    customer = model.get_customer_by_email(username)
+
+    return customer
 
 
 @app.route("/checkout")
