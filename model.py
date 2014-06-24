@@ -15,6 +15,10 @@ class Melon(object):
     def price_str(self):
         return "$%.2f"%self.price
 
+    def format_number(self, num):
+        return "$%.2f"%num
+
+
     def __repr__(self):
         return "<Melon: %s, %s, %s>"%(self.id, self.common_name, self.price_str())
 
